@@ -20,22 +20,29 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
         >
           <div className="flex justify-between items-start">
             <span className="text-secondary uppercase tracking-widest text-sm">Navigation</span>
-            <button onClick={onClose} className="text-primary text-2xl hover:opacity-70 transition-opacity">
+            <motion.button
+              onClick={onClose}
+              whileHover={{ rotate: 90 }}
+              transition={{ duration: 0.3 }}
+              className="text-primary text-2xl hover:opacity-70 transition-opacity"
+            >
               ✕
-            </button>
+            </motion.button>
           </div>
 
           <div className="flex flex-col gap-3 md:gap-4">
             {menuItems.map((item, i) => (
               <motion.a
                 key={item}
-                initial={{ x: -30, opacity: 0 }}
+                initial={{ x: -40, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: i * 0.08, duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
                 href="#"
-                className="text-5xl md:text-7xl lg:text-8xl font-light text-primary hover:text-accent transition-colors tracking-tighter"
+                className="text-5xl md:text-7xl lg:text-8xl font-light text-primary hover:text-accent transition-colors tracking-tighter font-display group"
               >
-                {item}
+                <span className="inline-block group-hover:translate-x-4 transition-transform duration-300">
+                  {item}
+                </span>
               </motion.a>
             ))}
           </div>

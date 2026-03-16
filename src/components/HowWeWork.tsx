@@ -12,7 +12,7 @@ export default function HowWeWork() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <h3 className="text-3xl md:text-5xl font-light text-primary tracking-tighter mb-8">How we work</h3>
+          <h3 className="text-3xl md:text-5xl font-light text-primary tracking-tighter mb-8 font-display">How we work</h3>
           <p className="text-body">
             We approach each build with a clarity of intent. Every plan is shaped through research, iteration, and conversation. What remains is the essential — designed to last and built to feel lived in.
           </p>
@@ -25,8 +25,17 @@ export default function HowWeWork() {
           transition={{ delay: 0.2, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           className="flex flex-wrap gap-3"
         >
-          {tags.map((tag) => (
-            <span key={tag} className="pill-tag">{tag}</span>
+          {tags.map((tag, i) => (
+            <motion.span
+              key={tag}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 + i * 0.08, duration: 0.5 }}
+              className="pill-tag"
+            >
+              {tag}
+            </motion.span>
           ))}
         </motion.div>
       </div>

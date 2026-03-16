@@ -4,6 +4,7 @@ import heroBg from "@/assets/hero-bg.jpg";
 export default function Hero() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 200]);
+  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
   return (
     <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
@@ -16,12 +17,12 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background" />
       </motion.div>
 
-      <div className="relative z-10 text-center px-4 max-w-4xl">
+      <motion.div style={{ opacity }} className="relative z-10 text-center px-4 max-w-4xl">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-          className="heading-xl mb-8"
+          className="heading-xl mb-8 font-display"
           style={{ textWrap: "balance" } as React.CSSProperties}
         >
           Spaces that feel rooted, human, and quietly bold
@@ -40,9 +41,11 @@ export default function Hero() {
           transition={{ delay: 0.8, duration: 0.6 }}
           className="flex flex-wrap justify-center gap-4"
         >
-          <button className="btn-primary">Discover More</button>
+          <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} className="btn-primary">
+            Discover More
+          </motion.button>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }
