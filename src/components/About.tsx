@@ -8,7 +8,7 @@ export default function About() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-        className="heading-lg max-w-5xl mx-auto leading-tight"
+        className="heading-lg max-w-5xl mx-auto leading-tight font-display"
       >
         At Terrene, we design with purpose and clarity, creating spaces that speak through light, scale, and the quiet confidence of lasting form.
       </motion.h2>
@@ -18,7 +18,9 @@ export default function About() {
         viewport={{ once: true }}
         transition={{ delay: 0.3, duration: 0.6 }}
       >
-        <button className="btn-secondary mt-16">Our Philosophy</button>
+        <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} className="btn-secondary mt-16">
+          Our Philosophy
+        </motion.button>
       </motion.div>
     </section>
   );

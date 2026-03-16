@@ -17,10 +17,11 @@ export default function Stats() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: i * 0.1, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="glass-card p-10 flex flex-col gap-4"
+            transition={{ delay: i * 0.12, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            whileHover={{ y: -6, transition: { duration: 0.3 } }}
+            className="glass-card p-10 flex flex-col gap-4 cursor-default"
           >
-            <span className="text-4xl font-light text-primary tabular-nums">{stat.val}</span>
+            <span className="text-4xl font-light text-primary tabular-nums font-display">{stat.val}</span>
             <span className="text-secondary text-sm uppercase tracking-wider leading-tight">{stat.label}</span>
           </motion.div>
         ))}

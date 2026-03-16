@@ -1,3 +1,4 @@
+import { useState } from "react";
 import SmoothScroll from "@/components/SmoothScroll";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -9,8 +10,12 @@ import Testimonials from "@/components/Testimonials";
 import Gallery from "@/components/Gallery";
 import BrandSection from "@/components/BrandSection";
 import Footer from "@/components/Footer";
+import FloatingMenu from "@/components/FloatingMenu";
+import FullscreenMenu from "@/components/FullscreenMenu";
 
 const Index = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <SmoothScroll>
       <main className="bg-background min-h-screen">
@@ -24,6 +29,8 @@ const Index = () => {
         <Gallery />
         <BrandSection />
         <Footer />
+        <FloatingMenu onClick={() => setMenuOpen(true)} />
+        <FullscreenMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
       </main>
     </SmoothScroll>
   );
