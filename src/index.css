@@ -99,11 +99,13 @@
 
   .heading-xl {
     @apply text-4xl md:text-7xl lg:text-8xl font-light tracking-tighter leading-[0.9];
+    font-family: 'Sora', sans-serif;
     color: hsl(var(--primary));
   }
 
   .heading-lg {
     @apply text-3xl md:text-5xl lg:text-7xl font-light tracking-tighter;
+    font-family: 'Sora', sans-serif;
     color: hsl(var(--primary));
   }
 
@@ -113,8 +115,28 @@
   }
 
   .pill-tag {
-    @apply px-5 py-2.5 rounded-full text-sm;
+    @apply px-5 py-2.5 rounded-full text-sm transition-all duration-300;
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: hsl(var(--secondary));
+  }
+
+  .pill-tag:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+  }
+
+  .metallic-text {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.7) 0%,
+      rgba(255, 255, 255, 0.3) 30%,
+      rgba(180, 180, 180, 0.5) 50%,
+      rgba(120, 120, 120, 0.4) 70%,
+      rgba(80, 80, 80, 0.3) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
