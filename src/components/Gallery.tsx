@@ -13,7 +13,7 @@ export default function Gallery() {
             className="rounded-3xl overflow-hidden h-[280px] md:h-[400px] cursor-pointer"
           >
             <motion.img
-              src={gallery1}
+              src="/gallery-1.jpg"
               className="w-full h-full object-cover"
               alt="Architecture facade"
               whileHover={{ scale: 1.08 }}
@@ -26,7 +26,7 @@ export default function Gallery() {
             className="rounded-3xl overflow-hidden h-[340px] md:h-[500px] -mt-8 md:-mt-12 relative group cursor-pointer"
           >
             <motion.img
-              src={gallery2}
+              src="/gallery-2.jpg"
               className="w-full h-full object-cover"
               alt="Office interior"
               whileHover={{ scale: 1.08 }}

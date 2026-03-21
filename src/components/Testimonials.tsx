@@ -22,7 +22,7 @@ export default function Testimonials() {
         className="max-w-3xl mx-auto"
       >
         <div className="rounded-3xl overflow-hidden mb-10">
-          <img src={testimonialImg} alt="Villa Interior" className="w-full h-[300px] md:h-[400px] object-cover" />
+          <img src="/testimonial.jpg" alt="Villa Interior" className="w-full h-[300px] md:h-[400px] object-cover" />
         </div>
 
         <p className="text-body italic mb-10 max-w-2xl mx-auto">

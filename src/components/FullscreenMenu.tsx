@@ -7,12 +7,12 @@ interface FullscreenMenuProps {
 }
 
 const menuItems = [
-  { name: "Index", image: "https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=80&w=2000" },
-  { name: "Studio", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000" },
-  { name: "Our Spaces", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=2000" },
-  { name: "One Installation", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=2000" },
-  { name: "Blueprints", image: "https://images.unsplash.com/photo-1600585154526-990dced4ea0d?auto=format&fit=crop&q=80&w=2000" },
-  { name: "Connect", image: "https://images.unsplash.com/photo-1600607687644-aac4c15cecb1?auto=format&fit=crop&q=80&w=2000" },
+  { name: "Index", image: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200" },
+  { name: "Studio", image: "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1200" },
+  { name: "Our Spaces", image: "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1200" },
+  { name: "One Installation", image: "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1200" },
+  { name: "Blueprints", image: "https://images.pexels.com/photos/3771097/pexels-photo-3771097.jpeg?auto=compress&cs=tinysrgb&w=1200" },
+  { name: "Connect", image: "https://images.pexels.com/photos/37347/office-sitting-room-executive-sitting-area.jpg?auto=compress&cs=tinysrgb&w=1200" },
 ];
 
 export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps) {

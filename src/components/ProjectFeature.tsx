@@ -6,22 +6,22 @@ const projects = [
   {
     title: "Sanctum Hall",
     desc: "Circular seating, arched openings, and natural textures create a serene gathering space.",
-    img: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=2000",
+    img: "/project-1.jpg",
   },
   {
     title: "Azure Pavilion",
     desc: "A brutalist approach to natural light, combining exposed concrete with expansive skylights.",
-    img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000",
+    img: "/project-2.jpg",
   },
   {
     title: "Lumina Residence",
     desc: "Glass, steel, and warm oak harmonizing to blur the boundaries between interior and exterior.",
-    img: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=2000",
+    img: "/project-3.jpg",
   },
   {
     title: "Oasis Gallery",
     desc: "A minimalist cathedral of art, utilizing negative space to emphasize individual exhibits.",
-    img: "https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=80&w=2000",
+    img: "/project-4.jpg",
   }
 ];
 
