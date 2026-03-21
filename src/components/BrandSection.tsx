@@ -1,57 +1,42 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import brandBg from "@/assets/brand-bg.jpg";
+
+const MarqueeItem = ({ text, direction = "left", speed = 20 }: { text: string, direction?: "left" | "right", speed?: number }) => {
+  return (
+    <div className="relative flex overflow-hidden whitespace-nowrap py-2 opacity-80 mix-blend-difference">
+      <motion.div
+        animate={{ x: direction === "left" ? ["0%", "-50%"] : ["-50%", "0%"] }}
+        transition={{ ease: "linear", duration: 50, repeat: Infinity }}
+        className="flex whitespace-nowrap"
+      >
+        <div className="text-[12vw] font-display uppercase tracking-[-0.05em] leading-none text-transparent flex shrink-0"
+          style={{ WebkitTextStroke: "1px rgba(255,255,255,0.4)" }}>
+          {/* Duplicate 4 times to ensure it fills screen and loops perfectly */}
+          <span className="pr-12">{text}</span>
+          <span className="pr-12">{text}</span>
+          <span className="pr-12">{text}</span>
+          <span className="pr-12">{text}</span>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
 
 export default function BrandSection() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const imgY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const containerRef = useRef(null);
 
   return (
-    <section ref={ref} className="relative h-[90vh] w-full overflow-hidden flex flex-col justify-between">
-      {/* Parallax bg */}
-      <motion.div style={{ y: imgY }} className="absolute inset-0 z-0 scale-110">
-        <img src={brandBg} className="w-full h-full object-cover" alt="Architecture stairs" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-background/40" />
-      </motion.div>
+    <section ref={containerRef} className="relative w-full overflow-hidden bg-background py-32 flex flex-col gap-4">
+      {/* Divider lines above and below acting as graphical architecture */}
+      <div className="w-full h-[1px] bg-white/10 mb-8" />
 
-      {/* Center text */}
-      <div className="flex-1 flex items-center justify-center relative z-10">
-        <motion.h2
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-          className="text-[18vw] md:text-[16vw] font-bold text-primary tracking-tighter leading-none select-none"
-          style={{ fontFamily: "'Sora', sans-serif" }}
-        >
-          Terrene
-        </motion.h2>
+      <div className="flex flex-col -my-4 transform rotate-[-2deg] scale-105">
+        <MarqueeItem text="TERRENE STUDIO — SPACES THAT BREATHE —" direction="left" speed={25} />
+        <MarqueeItem text="FORM FOLLOWS FEELING — RHYTHM & LIGHT —" direction="right" speed={30} />
+        <MarqueeItem text="ARCHITECTURAL PRESENCE — TIMELESS DESIGN —" direction="left" speed={20} />
       </div>
 
-      {/* Bottom row */}
-      <div className="relative z-10 px-6 md:px-12 pb-12 flex flex-col md:flex-row justify-between items-end gap-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <p className="text-2xl md:text-4xl text-primary font-light tracking-tight leading-tight italic" style={{ fontFamily: "'Sora', sans-serif" }}>
-            Spaces that breathe<br />with time
-          </p>
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="text-secondary text-sm md:text-base max-w-sm text-right leading-relaxed"
-        >
-          Our approach is guided by rhythm, proportion, and light, allowing every environment to grow more meaningful as it is lived in.
-        </motion.p>
-      </div>
+      <div className="w-full h-[1px] bg-white/10 mt-8" />
     </section>
   );
 }

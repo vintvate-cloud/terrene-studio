@@ -51,7 +51,7 @@ export default function Footer() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
-        className="metallic-text text-[18vw] md:text-[16vw] font-bold leading-[0.85] tracking-tighter select-none text-center w-full"
+        className="metallic-text text-[20vw] md:text-[25vw] font-bold leading-[0.85] tracking-tighter select-none text-center w-full"
         style={{ fontFamily: "'Inter', sans-serif" }}
       >
         Terrene
@@ -59,11 +59,9 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="flex flex-col md:flex-row justify-between items-center mt-12 text-secondary text-sm gap-4">
-        <span>
-          Developed by — <span className="text-accent">Razal</span>
-        </span>
+
         <span className="text-muted-foreground">This website uses cookies.</span>
-        <span>All rights reserved © 2025</span>
+        <span>All rights reserved © 2026</span>
       </div>
     </footer>
   );

@@ -10,18 +10,15 @@ import Testimonials from "@/components/Testimonials";
 import Gallery from "@/components/Gallery";
 import BrandSection from "@/components/BrandSection";
 import Footer from "@/components/Footer";
-import FloatingMenu from "@/components/FloatingMenu";
-import FullscreenMenu from "@/components/FullscreenMenu";
 import Preloader from "@/components/Preloader";
 import CustomCursor from "@/components/CustomCursor";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Index = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div className="relative overflow-hidden w-full h-full">
+    <div className="relative w-full">
       <AnimatePresence mode="wait">
         {isLoading && (
           <Preloader key="preloader" onComplete={() => setIsLoading(false)} />
@@ -47,8 +44,6 @@ const Index = () => {
           <Gallery />
           <BrandSection />
           <Footer />
-          <FloatingMenu onClick={() => setMenuOpen(true)} />
-          <FullscreenMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
         </motion.main>
       </SmoothScroll>
     </div>
