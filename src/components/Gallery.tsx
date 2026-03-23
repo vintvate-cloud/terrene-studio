@@ -1,67 +1,97 @@
-import { motion } from "framer-motion";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+
+function RevealImage({ src, alt, className }: { src: string; alt: string; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 90%", "start 20%"],
+  });
+  // Shutter/wipe reveal: clip-path sweeps from bottom
+  const clipPath = useTransform(
+    scrollYProgress,
+    [0, 0.6],
+    ["inset(100% 0% 0% 0% round 1rem)", "inset(0% 0% 0% 0% round 1rem)"]
+  );
+  // Inner image parallax
+  const imageY = useTransform(scrollYProgress, [0, 1], ["8%", "-8%"]);
+
+  return (
+    <motion.div ref={ref} style={{ clipPath }} className={`overflow-hidden ${className}`}>
+      <motion.img
+        src={src}
+        alt={alt}
+        style={{ y: imageY }}
+        className="w-full h-full object-cover scale-110"
+      />
+    </motion.div>
+  );
+}
 
 export default function Gallery() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Velocity-inspired skew: section skews very slightly as you scroll through it
+  const skewY = useTransform(scrollYProgress, [0, 0.5, 1], [1.5, 0, -1.5]);
+  const textY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const textOpacity = useTransform(scrollYProgress, [0.1, 0.4], [0, 1]);
+
   return (
-    <section className="section-container py-32">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <div className="lg:col-span-7 grid grid-cols-2 gap-4">
+    <section ref={sectionRef} className="relative z-10 bg-background w-full py-32 overflow-hidden">
+      <div className="section-container">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          {/* Images — left column */}
           <motion.div
-            whileHover={{ scale: 1.03 }}
-            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="rounded-3xl overflow-hidden h-[280px] md:h-[400px] cursor-pointer"
+            style={{ skewY }}
+            className="lg:col-span-7 grid grid-cols-2 gap-4 will-change-transform"
           >
-            <motion.img
+            <RevealImage
               src="/gallery-1.jpg"
-              className="w-full h-full object-cover"
               alt="Architecture facade"
-              whileHover={{ scale: 1.08 }}
-              transition={{ duration: 0.6 }}
+              className="h-[280px] md:h-[420px] rounded-2xl cursor-pointer hover:brightness-110 transition-all duration-500"
             />
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.03 }}
-            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="rounded-3xl overflow-hidden h-[340px] md:h-[500px] -mt-8 md:-mt-12 relative group cursor-pointer"
-          >
-            <motion.img
-              src="/gallery-2.jpg"
-              className="w-full h-full object-cover"
-              alt="Office interior"
-              whileHover={{ scale: 1.08 }}
-              transition={{ duration: 0.6 }}
-            />
-            <div className="absolute inset-0 bg-background/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-              <div className="text-center">
-                <span className="text-5xl text-primary block font-display font-light">800+</span>
-                <span className="text-secondary text-xs uppercase tracking-widest mt-2 block">Project Images</span>
+            <div className="relative -mt-8 md:-mt-14 group cursor-pointer">
+              <RevealImage
+                src="/gallery-2.jpg"
+                alt="Office interior"
+                className="h-[340px] md:h-[520px] rounded-2xl"
+              />
+              {/* Overlay — slides up on hover */}
+              <div className="absolute inset-0 rounded-2xl bg-background/65 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                <div className="text-center">
+                  <span className="text-5xl text-primary block font-display font-light">800+</span>
+                  <span className="text-secondary text-xs uppercase tracking-widest mt-2 block">Project Images</span>
+                </div>
               </div>
             </div>
           </motion.div>
-        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="lg:col-span-5 space-y-8"
-        >
-          <h3 className="text-3xl md:text-5xl text-primary tracking-tighter font-light font-display">
-            Take a closer look at the projects that define our practice.
-          </h3>
-          <p className="text-body">
-            From intimate interiors to expansive landscapes, each image highlights a unique perspective that might spark your next big idea.
-          </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            className="btn-primary"
+          {/* Text — right column with independent parallax */}
+          <motion.div
+            style={{ y: textY, opacity: textOpacity }}
+            className="lg:col-span-5 space-y-8"
           >
-            Explore Gallery
-          </motion.button>
-        </motion.div>
+            <p className="text-secondary/50 uppercase tracking-[0.3em] text-xs">Visual Archive</p>
+            <h3 className="text-3xl md:text-5xl text-primary tracking-tighter font-light font-display leading-tight">
+              Take a closer look at the projects that define our practice.
+            </h3>
+            <p className="text-body leading-relaxed">
+              From intimate interiors to expansive landscapes, each image highlights a unique perspective that might spark your next big idea.
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.12)" }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ duration: 0.2 }}
+              className="btn-primary inline-block"
+            >
+              Explore Gallery
+            </motion.button>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

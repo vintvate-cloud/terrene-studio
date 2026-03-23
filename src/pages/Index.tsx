@@ -16,6 +16,16 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
+  // isReady fires slightly after loading ends — gives the preloader exit animation
+  // time to complete its own transition before we start drawing the page
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    if (!isLoading) {
+      const t = setTimeout(() => setIsReady(true), 150);
+      return () => clearTimeout(t);
+    }
+  }, [isLoading]);
 
   return (
     <div className="relative w-full">
@@ -29,14 +39,18 @@ const Index = () => {
 
       <SmoothScroll>
         <motion.main
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: isLoading ? 0 : 1, y: isLoading ? 20 : 0 }}
-          transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1], delay: 0.1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isLoading ? 0 : 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="bg-background min-h-screen"
         >
-          <Navbar />
-          <Hero />
-          <Stats />
+          <Navbar isReady={isReady} />
+          {/* 200vh wrapper: gives 100vh of scroll fuel for the curtain pull */}
+          <div style={{ height: "200vh" }}>
+            <Hero isReady={isReady} />
+          </div>
+          {/* -100vh margin: Stats curtain starts at the bottom of the viewport, pulls upward over the hero */}
+          <Stats className="-mt-[100vh]" />
           <About />
           <HowWeWork />
           <ProjectFeature />
