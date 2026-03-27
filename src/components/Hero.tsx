@@ -92,7 +92,7 @@ export default function Hero({ isReady = false }: { isReady?: boolean }) {
           animate={isReady ? "visible" : "hidden"}
           className="text-white/80 max-w-xl mx-auto mb-14 text-base md:text-lg font-light tracking-wide flex flex-col items-center"
         >
-          <SplitTextParagraph text="At Terrene, we shape environments that elevate daily life," />
+          <SplitTextParagraph text="At ARC Dezine, we shape environments that elevate daily life," />
           <span className="mt-1" />
           <SplitTextParagraph text="invite pause, and speak through texture and light." />
         </motion.div>

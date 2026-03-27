@@ -45,16 +45,16 @@ export default function Footer() {
         </motion.p>
       </div>
 
-      {/* Giant metallic "Terrene" */}
+      {/* Giant metallic "ARC Dezine" */}
       <motion.h2
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
-        className="metallic-text text-[20vw] md:text-[25vw] font-bold leading-[0.85] tracking-tighter select-none text-center w-full"
+        className="metallic-text text-[14vw] md:text-[16vw] font-bold leading-none tracking-tighter select-none text-center w-full whitespace-nowrap"
         style={{ fontFamily: "'Inter', sans-serif" }}
       >
-        Terrene
+        ARC Dezine
       </motion.h2>
 
       {/* Bottom bar */}

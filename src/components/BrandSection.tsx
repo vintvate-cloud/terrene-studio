@@ -31,7 +31,7 @@ export default function BrandSection() {
       <div className="w-full h-[1px] bg-white/10 mb-8" />
 
       <div className="flex flex-col -my-4 transform rotate-[-2deg] scale-105">
-        <MarqueeItem text="TERRENE STUDIO — SPACES THAT BREATHE —" direction="left" speed={25} />
+        <MarqueeItem text="ARC DEZINE STUDIO — SPACES THAT BREATHE —" direction="left" speed={25} />
         <MarqueeItem text="FORM FOLLOWS FEELING — RHYTHM & LIGHT —" direction="right" speed={30} />
         <MarqueeItem text="ARCHITECTURAL PRESENCE — TIMELESS DESIGN —" direction="left" speed={20} />
       </div>

@@ -9,7 +9,7 @@ const testimonials = [
     initials: "EH",
   },
   {
-    quote: "Terrene didn't just design our space — they understood our rhythm. The result is an office where we actually want to spend time.",
+    quote: "ARC Dezine didn't just design our space — they understood our rhythm. The result is an office where we actually want to spend time.",
     name: "Marcus Rowe",
     role: "Creative Director",
     initials: "MR",

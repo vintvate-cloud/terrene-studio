@@ -65,7 +65,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
             {/* Footer */}
             <div className="flex flex-col sm:flex-row justify-between text-secondary/70 gap-8 text-xs md:text-sm uppercase tracking-widest">
               <div className="flex flex-col gap-2">
-                <span className="hover:text-primary transition-colors cursor-pointer">build@terrene.studio</span>
+                <span className="hover:text-primary transition-colors cursor-pointer">build@arcdezine.studio</span>
                 <span className="hover:text-primary transition-colors cursor-pointer">+1 (872) 441-2086</span>
               </div>
               <div className="flex gap-6 sm:gap-8">

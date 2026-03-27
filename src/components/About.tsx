@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
-const text = "At Terrene, we design with purpose and clarity, creating spaces that speak through light, scale, and the quiet confidence of lasting form.";
+const text = "At ARC Dezine, we design with purpose and clarity, creating spaces that speak through light, scale, and the quiet confidence of lasting form.";
 
 export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);

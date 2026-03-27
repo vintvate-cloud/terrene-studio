@@ -57,7 +57,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
                     : { duration: 1.5, ease: "easeOut" }
                 }
               >
-                TERRENE
+                ARC DEZINE
               </motion.text>
             </mask>
           </defs>
